@@ -6,7 +6,7 @@
 /*   By: dabdygal <dabdygal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/22 13:10:51 by dabdygal          #+#    #+#             */
-/*   Updated: 2024/06/22 13:48:39 by dabdygal         ###   ########.fr       */
+/*   Updated: 2024/06/22 15:17:58 by dabdygal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,9 @@
 const std::string	DiamondTrap::_type = DIAMONDTRAP_TYPE;
 
 //Constructors
-DiamondTrap::DiamondTrap() : ScavTrap(DIAMONDTRAP_DFT_NAME, DIAMONDTRAP_DFT_HP, DIAMONDTRAP_DFT_EP, DIAMONDTRAP_DFT_DMG), FragTrap(DIAMONDTRAP_DFT_NAME, DIAMONDTRAP_DFT_HP, DIAMONDTRAP_DFT_EP, DIAMONDTRAP_DFT_DMG)
+DiamondTrap::DiamondTrap() : ClapTrap("_default_name_clap_name", DIAMONDTRAP_DFT_HP, DIAMONDTRAP_DFT_EP, DIAMONDTRAP_DFT_DMG), ScavTrap(DIAMONDTRAP_DFT_NAME, DIAMONDTRAP_DFT_HP, DIAMONDTRAP_DFT_EP, DIAMONDTRAP_DFT_DMG), FragTrap(DIAMONDTRAP_DFT_NAME, DIAMONDTRAP_DFT_HP, DIAMONDTRAP_DFT_EP, DIAMONDTRAP_DFT_DMG)
 {
 	_name = DIAMONDTRAP_DFT_NAME;
-	setName(getName() + "_clap_name");
 	std::cout << "Default Constructor called of " << _type << std::endl;
 }
 
@@ -29,13 +28,13 @@ DiamondTrap::DiamondTrap(const DiamondTrap &src) : ClapTrap(src), ScavTrap(src),
 	std::cout << "Copy Constructor called of " << _type << std::endl;
 }
 
-DiamondTrap::DiamondTrap(const std::string &name, unsigned int hp, unsigned int ep, unsigned int attack) : ScavTrap(name + "_clap_name", hp, ep, attack), FragTrap(name + "_clap_name", hp, ep, attack)
+DiamondTrap::DiamondTrap(const std::string &name, unsigned int hp, unsigned int ep, unsigned int attack) : ClapTrap(name + "_clap_name", hp, ep, attack), ScavTrap(name, hp, ep, attack), FragTrap(name, hp, ep, attack)
 {
 	_name = name;
 	std::cout << "Fields Constructor called of " << _type << std::endl;
 }
 
-DiamondTrap::DiamondTrap(const std::string &name) : ScavTrap(name + "_clap_name", DIAMONDTRAP_DFT_HP, DIAMONDTRAP_DFT_EP, DIAMONDTRAP_DFT_DMG), FragTrap(name + "_clap_name", DIAMONDTRAP_DFT_HP, DIAMONDTRAP_DFT_EP, DIAMONDTRAP_DFT_DMG)
+DiamondTrap::DiamondTrap(const std::string &name) : ClapTrap(name + "_clap_name", DIAMONDTRAP_DFT_HP, DIAMONDTRAP_DFT_EP, DIAMONDTRAP_DFT_DMG), ScavTrap(name, DIAMONDTRAP_DFT_HP, DIAMONDTRAP_DFT_EP, DIAMONDTRAP_DFT_DMG), FragTrap(name, DIAMONDTRAP_DFT_HP, DIAMONDTRAP_DFT_EP, DIAMONDTRAP_DFT_DMG)
 {
 	_name = name;
 	std::cout << "Name field Constructor called of " << _type << std::endl;
@@ -52,11 +51,10 @@ DiamondTrap::~DiamondTrap()
 // Operators
 DiamondTrap & DiamondTrap::operator=(const DiamondTrap &assign)
 {
-	setDiamondName(assign.getDiamondName());
-	setName(assign.getName());
-	setHp(assign.getHp());
-	setEp(assign.getEp());
-	setAttack(assign.getAttack());
+	_name = assign.getDiamondName();
+	ClapTrap::operator=(assign);
+	ScavTrap::operator=(assign);
+	FragTrap::operator=(assign);
 	return *this;
 }
 
@@ -76,7 +74,12 @@ const std::string&	DiamondTrap::getType( void ) const
 }
 
 // Actions
-void	attack(const std::string &target)
+void	DiamondTrap::attack(const std::string &target)
 {
-	ScavTrap::attack(target);
+	ScavTrap::attack(target);	
+}
+
+void	DiamondTrap::whoAmI( void ) const
+{
+	std::cout << _type << ' ' << _name << ' ' << getName() << ": What am I?" << std::endl;
 }

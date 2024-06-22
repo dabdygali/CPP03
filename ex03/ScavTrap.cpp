@@ -6,7 +6,7 @@
 /*   By: dabdygal <dabdygal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/21 15:47:49 by dabdygal          #+#    #+#             */
-/*   Updated: 2024/06/22 11:57:01 by dabdygal         ###   ########.fr       */
+/*   Updated: 2024/06/22 15:19:06 by dabdygal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,6 @@ const std::string &	ScavTrap::getType( void ) const
 }
 
 //Actions
-
 void	ScavTrap::guardGate( void ) const
 {
 	std::cout << getType() << ' ' << getName() << " is now in Gate keeper mode" << std::endl;
