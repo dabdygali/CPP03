@@ -6,13 +6,13 @@
 #    By: dabdygal <dabdygal@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/15 15:43:23 by dabdygal          #+#    #+#              #
-#    Updated: 2024/06/22 11:37:39 by dabdygal         ###   ########.fr        #
+#    Updated: 2024/06/22 11:41:45 by dabdygal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # *********************************INITIALIZE********************************* #
 
-BIN_NAME = scavtrap
+BIN_NAME = fragtrap
 
 INCLUDE_DIR = .
 
@@ -21,11 +21,13 @@ SRC_DIR = .
 OBJ_DIR = .
 
 INCLUDE_FILES = ClapTrap.hpp \
-				ScavTrap.hpp
+				ScavTrap.hpp \
+				FragTrap.hpp
 
 SRC_FILES = main.cpp \
 			ClapTrap.cpp \
-			ScavTrap.cpp
+			ScavTrap.cpp \
+			FragTrap.cpp
 
 OBJ_FILES = $(SRC_FILES:.cpp=.o)
 

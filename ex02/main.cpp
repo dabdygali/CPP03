@@ -6,25 +6,23 @@
 /*   By: dabdygal <dabdygal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 12:23:34 by dabdygal          #+#    #+#             */
-/*   Updated: 2024/06/22 11:37:12 by dabdygal         ###   ########.fr       */
+/*   Updated: 2024/06/22 11:55:34 by dabdygal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cstdlib>
-#include "ClapTrap.hpp"
-#include "ScavTrap.hpp"
+#include "FragTrap.hpp"
 
 int	main()
 {
-	std::string	name1("CL4P-TP");
-	std::string	name2("SC4V-TP");
+	std::string	name("FR4G-TP");
+	FragTrap	frag(name);
 
-	ScavTrap	scav(name2);
-
-	scav.guardGate();
-	scav.attack("Test");
-	scav.beRepaired(20);
-	scav.takeDamage(15);
-
+	frag.highFivesGuys();
+	frag.attack("Test");
+	frag.takeDamage(20);
+	frag.beRepaired(5);
+	frag.takeDamage(1000);
+	frag.beRepaired(50);
 	return EXIT_SUCCESS;
 }
