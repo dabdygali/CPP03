@@ -6,7 +6,7 @@
 /*   By: dabdygal <dabdygal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/21 15:47:49 by dabdygal          #+#    #+#             */
-/*   Updated: 2024/06/22 15:19:06 by dabdygal         ###   ########.fr       */
+/*   Updated: 2024/06/23 11:53:10 by dabdygal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,4 +65,21 @@ const std::string &	ScavTrap::getType( void ) const
 void	ScavTrap::guardGate( void ) const
 {
 	std::cout << getType() << ' ' << getName() << " is now in Gate keeper mode" << std::endl;
+}
+
+void	ScavTrap::attack(const std::string &target)
+{
+	if (getEp() > 0 && getHp() > 0)
+	{
+		setEp(getEp() - 1);
+		std::cout << "ScavTrap " << getName() << " attacks " << target << ", causing " << getAttack() << " points of damage!" << std::endl;
+	}
+	else
+	{
+		if (getHp() == 0)
+			std::cout << "ScavTrap " << getName() << " has " << getHp() << " hit points and cannot attack" << std::endl;
+		else
+			std::cout << "ScavTrap " << getName() << " has " << getEp() << " energy points and cannot attack" << std::endl;
+	}
+	dispStats();
 }

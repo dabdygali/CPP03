@@ -6,7 +6,7 @@
 /*   By: dabdygal <dabdygal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 12:23:08 by dabdygal          #+#    #+#             */
-/*   Updated: 2024/06/22 15:18:55 by dabdygal         ###   ########.fr       */
+/*   Updated: 2024/06/23 11:50:11 by dabdygal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@
 
 			//Actions
 			void	guardGate( void ) const;
+			void	attack(const std::string &target);
 	};
 
 #endif
